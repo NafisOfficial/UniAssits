@@ -1,5 +1,6 @@
 import { Title } from "./landing/Title";
-import { Navbar } from "./navbar/Navbar";
+import { Navbar } from "./landing/Navbar";
+import { Banner } from "./landing/Banner";
 
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <main>
       <Title />
       <Navbar/>
+      <Banner/>
     </main>
   );
 }
