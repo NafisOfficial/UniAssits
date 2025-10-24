@@ -1,9 +1,12 @@
-import Title from "./landing/title";
+import { Title } from "./landing/Title";
+import { Navbar } from "./navbar/Navbar";
+
 
 export default function Home() {
   return (
-    <main className="">
-      <Title text="A Better Way to Manage Your Studies" />
+    <main>
+      <Title />
+      <Navbar/>
     </main>
   );
 }
