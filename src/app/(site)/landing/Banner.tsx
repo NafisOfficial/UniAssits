@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export const Banner = () => {
   return (
-    <div className="flex flex-col md:flex-row mt-10 mx-20">
+    <div className="flex flex-col items-center gap-20 md:flex-row mt-10 mx-20">
       <div className="w-1/2 flex flex-col gap-5">
         <h1 className="text-7xl">Your University, One Question away.</h1>
         <p className="text-3xl">
@@ -22,7 +22,12 @@ export const Banner = () => {
         </div>
       </div>
       <div className="w-1/2">
-
+          <div className="h-10 w-full bg-[linear-gradient(136.83deg,#FFE5D1_4.45%,#FFB16B_97.83%)] px-5 flex justify-start items-center gap-2">
+            <p className="h-5 w-5 rounded-full bg-[#dc6d18]"></p>
+            <p className="h-5 w-5 rounded-full bg-[#FCAAAA]"></p>
+            <p className="h-5 w-5 rounded-full bg-[#D9D9D9]"></p>
+          </div>
+          <div></div>
       </div>
     </div>
   );
