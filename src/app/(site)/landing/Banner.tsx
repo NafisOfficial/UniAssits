@@ -1,19 +1,19 @@
-import { BtnGradient } from "@/components/common/buttons/BtnGradient";
-import { BtnOutline } from "@/components/common/buttons/BtnOutline";
+import { BtnGradient } from "@/components/common/ui/buttons/BtnGradient";
+import { BtnOutline } from "@/components/common/ui/buttons/BtnOutline";
+import { Description } from "@/components/landing/Description";
+import { Headline } from "@/components/landing/Headline";
 import Image from "next/image";
-import { ImAttachment } from "react-icons/im";
 import { FaArrowUp } from "react-icons/fa6";
+import { ImAttachment } from "react-icons/im";
 
 export const Banner = () => {
   return (
     <div className="flex flex-col items-center gap-40 md:flex-row mt-10 mx-20">
       <div className="w-1/2 flex flex-col gap-5">
-        <h1 className="text-7xl">Your University, One Question away.</h1>
-        <p className="text-3xl">
-          Ask about fees, departments, locations, bus schedules, contacts,
+        <Headline text="Your University, One Question away." className="text-left"/>
+        <Description text="Ask about fees, departments, locations, bus schedules, contacts,
           admissions & more. Upload PDFs and our AI learns automatically — with
-          cited answers and relevant images.
-        </p>
+          cited answers and relevant images." className="text-left" />
         <div className="flex gap-5">
           <BtnGradient label="Start Asking" />
           <BtnOutline label="Explore Features" />
@@ -60,7 +60,9 @@ export const Banner = () => {
             <div className="flex justify-between items-center absolute left-10 bottom-5 bg-[#F8E0C9] w-11/12  p-2 rounded-full">
               <div className="flex items-center gap-2 ms-2">
                 <ImAttachment className="text-[#E07522]" />
-                <p className="text-transparent bg-clip-text bg-[linear-gradient(136.83deg,#E07522_4.45%,#F8A65D_97.83%)] font-bold ">Ask anything</p>
+                <p className="text-transparent bg-clip-text bg-[linear-gradient(136.83deg,#E07522_4.45%,#F8A65D_97.83%)] font-bold ">
+                  Ask anything
+                </p>
               </div>
               <div className="bg-[linear-gradient(136.83deg,#E07522_4.45%,#F8A65D_97.83%)] p-4 rounded-full">
                 <FaArrowUp className="text-white " />
