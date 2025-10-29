@@ -9,7 +9,7 @@ type ButtonProps = {
 }
 
 
-export const BtnOutline: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
     label = "button",
     onClick,
     type = "button",
@@ -17,7 +17,7 @@ export const BtnOutline: React.FC<ButtonProps> = ({
     disabled= false,
 }) => {
   return (
-    <button onClick={onClick} type={type} className={` ${className}`} disabled={disabled}>
+    <button onClick={onClick} type={type} className={`border border-white rounded-lg active:scale-95 cursor-pointer text-white px-10 py-5  ${className}`} disabled={disabled}>
         {label}
     </button>
   );

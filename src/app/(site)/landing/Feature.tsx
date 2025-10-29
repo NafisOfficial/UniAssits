@@ -61,7 +61,7 @@ export const Feature = () => {
           <FeatureCard
             icon={<IoLanguageOutline className="text-4xl" />}
             iconStyle="bg-[#FF5BBD] p-5"
-            containerStyle="w-lg gap-16 border border-[#DC6D18] p-15"
+            containerStyle="w-lg gap-16 p-15"
             number="05"
             title="Auto‑learn from uploads"
             description="Admins upload PDFs/DOCX/Images and the system extracts text & images, builds embeddings and keeps versions for you."
