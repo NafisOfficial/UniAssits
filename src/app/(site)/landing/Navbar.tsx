@@ -1,6 +1,7 @@
 "use client";
 import { BtnGradient } from "@/components/common/ui/buttons/BtnGradient";
 import { BtnOutline } from "@/components/common/ui/buttons/BtnOutline";
+import Image from "next/image";
 
 export const Navbar = () => {
   const handleLogin = () => {
@@ -14,7 +15,9 @@ export const Navbar = () => {
   return (
     <div className="bg-[#FFF8EF] shadow-lg">
       <div className="flex justify-between items-center container mx-auto">
-        <div className="">logo will be here</div>
+        <div className="">
+          <Image src={"/logo/logo.png"} alt="logo" width={127} height={33} />
+        </div>
         <div className="flex items-center gap-5 py-7">
           <p className="cursor-pointer">Features</p>
           <p className="cursor-pointer">How it works</p>
