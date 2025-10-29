@@ -1,7 +1,7 @@
-
 import { Navbar } from "./landing/Navbar";
 import { Banner } from "./landing/Banner";
 import { Feature } from "./landing/Feature";
+import { Works } from "./landing/Works";
 
 export default function Home() {
   return (
@@ -11,7 +11,10 @@ export default function Home() {
       </div>
       <Navbar />
       <Banner />
-      <Feature />
+      <div className="">
+        <Feature />
+        <Works />
+      </div>
     </main>
   );
 }
