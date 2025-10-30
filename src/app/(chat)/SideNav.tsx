@@ -6,11 +6,16 @@ import { GrHistory } from "react-icons/gr";
 import Image from "next/image";
 
 const SideNav = () => {
+
+  const handleLogout = () => {
+    // Add your logout logic here   
+    }
+
   return (
     <aside className="w-64 h-screen bg-[#FFF4E4]  rounded-xl  border-r border-gray-200 flex flex-col justify-between fixed">
       {/* Top section */}
       <div className="flex flex-col gap-10 items-center p-5">
-        <Image src={"/logo/logo.png"} width={127} height={33} alt="logo" />
+        <Link href="/"><Image src={"/logo/logo.png"} width={127} height={33} alt="logo" /></Link>
         <nav className="flex flex-col  gap-2">
           <Link
             href="/chat"
@@ -41,7 +46,7 @@ const SideNav = () => {
 
       {/* Bottom section */}
       <div className="p-5 border-t border-gray-200">
-        <button className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg transition">
+        <button onClick={handleLogout} className="w-full bg-orange-500 hover:bg-orange-600 text-white py-2 rounded-lg transition">
           Logout
         </button>
       </div>
