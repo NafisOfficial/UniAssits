@@ -1,11 +1,52 @@
+"use client";
+
 import { Button } from "@/components/common/ui/buttons/Button";
 import Input from "@/components/common/ui/buttons/Input";
 import { Description } from "@/components/landing/Description";
 import { Headline } from "@/components/landing/Headline";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 const SignUp = () => {
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+    confirm_password: "",
+  });
+  const [errors, setErrors] = useState<Record<string, string[]>>({});
+  const router = useRouter();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrors({});
+
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users/sign-up/`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.status === 201) {
+        router.push("/login");
+      } else {
+        const errorData = await response.json();
+        setErrors(errorData);
+      }
+    } catch (err) {
+      setErrors({
+        non_field_errors: ["An error occurred. Please try again."],
+      });
+    }
+  };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="flex bg-[linear-gradient(92deg,#FFF4E4_1.63%,rgba(232,175,127,0.31)_97.99%)] bg-clip-text text-transparent shadow-lg mx-20">
@@ -34,55 +75,68 @@ const SignUp = () => {
             </div>
           </ul>
         </div>
-        <div className="w-1/2 rounded-r-md bg-[#eec49b] p-20 flex flex-col gap-5">
+        <form
+          onSubmit={handleSubmit}
+          className="w-1/2 rounded-r-md bg-[#eec49b] p-20 flex flex-col gap-5"
+        >
           <div className="flex justify-between items-center">
             <Input
               label="First name"
-              name="first name"
+              name="first_name"
               type="text"
               placeholder="first name"
+              value={formData.first_name}
+              onChange={handleChange}
             />
             <Input
               label="last name"
-              name="last name"
+              name="last_name"
               type="text"
               placeholder="last name"
+              value={formData.last_name}
+              onChange={handleChange}
             />
           </div>
+          {errors.first_name && <p className="text-red-500 text-sm">{errors.first_name[0]}</p>}
+          {errors.last_name && <p className="text-red-500 text-sm">{errors.last_name[0]}</p>}
           <Input
             label="university email"
             name="email"
             type="email"
             placeholder="you@university.edu"
+            value={formData.email}
+            onChange={handleChange}
           />
+          {errors.email && <p className="text-red-500 text-sm">{errors.email[0]}</p>}
           <div className="flex justify-between items-center">
             <Input
               label="password"
               name="password"
               placeholder="password"
               type="password"
+              value={formData.password}
+              onChange={handleChange}
             />
             <Input
-              label="confirm"
-              name="confirm"
+              label="confirm password"
+              name="confirm_password"
               placeholder="confirm"
               type="password"
+              value={formData.confirm_password}
+              onChange={handleChange}
             />
           </div>
-          <Button label="Create Account" className="bg-[#DC6D18]" />
-          {/* <div className="flex gap-5 text-[#6F6565] w-full items-center mx-auto px-10 mt-4">
-            <p className="border border-[#6F6565] w-3/4" />
-            OR
-            <p className="border border-[#6F6565] w-3/4" />
-          </div> */}
+          {errors.password && <p className="text-red-500 text-sm">{errors.password[0]}</p>}
+          {errors.non_field_errors && <p className="text-red-500 text-sm">{errors.non_field_errors[0]}</p>}
+          <Button type="submit" label="Create Account" className="bg-[#DC6D18]" />
           <p className="text-black">
             Already have an account? Switch to {" "}
-            <Link href={"/signup"} className="font-bold">
+            <Link href={"/login"} className="font-bold">
               Log in
             </Link>{" "}
             .
           </p>
-        </div>
+        </form>
       </div>
     </div>
   );
