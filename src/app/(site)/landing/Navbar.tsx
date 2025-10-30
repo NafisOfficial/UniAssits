@@ -2,13 +2,17 @@
 import { BtnGradient } from "@/components/common/ui/buttons/BtnGradient";
 import { BtnOutline } from "@/components/common/ui/buttons/BtnOutline";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const Navbar = () => {
+  const router=useRouter()
   const handleLogin = () => {
+    router.push("/login")
     console.log("login");
   };
 
   const handleSignup = () => {
+    router.push("/signup")
     console.log("signup");
   };
 
